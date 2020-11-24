@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Telecom Egypt</title>
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet3" href="css/util.css">
+
+
+</head>
+<body
+	style="background-image: url('images/bg03.jpg'); height =100%; background-position: center; background-size: cover;">
+	<form>
+
+		<section>
+
+			<div class="tbl-header">
+				<table cellpadding="0" cellspacing="0" border="0">
+					<thead>
+						<tr>
+							<th>User ID</th>
+							<th>Bus Number</th>
+							<th>Work In</th>
+							<th>Bus Time</th>
+							<th> Approve | Decline</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+			<div class="tbl-content">
+				<table cellpadding="0" cellspacing="0" border="0">
+					<tbody>
+						<tr th:each="req : ${requestslist}">
+							<td th:text="${req.mykey.uId}"></td>
+							<td th:text="${req.busNo}"></td>
+							<td th:text="${req.branch}"></td>
+							<td th:text="${req.mykey.time}"></td>
+
+							<td><a th:href="@{/admin}">Approve</a>
+								| <a th:href="@{/admin}">Decline</a></td>
+
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+		</section>
+		<div>
+			<a th:href="@{/employee}"><- Home</a>
+		</div>
+
+
+
+	</form>
+
+
+
+
+</body>
+
+</html>

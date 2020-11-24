@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Telecom Egypt</title>
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet3" href="css/util.css">
+
+
+</head>
+<body
+	style="background-image: url('images/bg03.jpg'); height =100%; background-position: center; background-size: cover;">
+	<form>
+
+		<section>
+
+			<div align="right">
+				<a th:href="@{/login}"> Log Out </a> | <a
+					th:href="@{/updatemember?id=__${userid}__}"> Update My Info </a>
+			</div>
+			<br>
+			<br>
+			<div class="tbl-header">
+				<table cellpadding="0" cellspacing="0" border="0">
+					<thead>
+						<tr>
+							<th>Bus Number</th>
+							<th>From</th>
+							<th>To</th>
+							<th>Bus Time</th>
+							<th>Driver Name</th>
+							<th>Available</th>
+							<th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;...</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+			<div class="tbl-content">
+				<table cellpadding="0" cellspacing="0" border="0">
+					<tbody>
+						<tr th:each="bus : ${listbuses.busesList}">
+							<td th:text="${bus.busNo}"></td>
+							<td th:text="${bus.busFrom}"></td>
+							<td th:text="${bus.busTo}"></td>
+							<td th:text="${bus.busTime}"></td>
+							<td th:text="${bus.busName}"></td>
+							<td th:text="${bus.capacity - bus.noOfEmployee }"></td>
+							<td><a th:href="@{/updatebus?id=__${bus.busNo}__}">Update</a>
+								| <a th:href="@{/deletebus?id=__${bus.busNo}__}">Delete</a></td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+		</section>
+	
+
+	</form>
+	   
+	
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+	&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+	&nbsp; &nbsp; &nbsp; &nbsp;
+	<div class="inner">
+		<form method="get" action="/addbus" th:action="@{/addbus}">
+			<button class="login100-form-btn" formaction="/addbus"
+				th:href="@{/addbus}">Add New Bus</button>
+		</form>
+	</div>
+
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+	<div class="inner">
+		<form method="get" action="/members" th:action="@{/members}">
+			<button class="login100-form-btn" formaction="/members"
+				th:href="@{/members}">Members</button>
+
+		</form>
+	</div>
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+	<div class="inner">
+		<form method="get" action="/adminrequests" th:action="@{/adminrequests}">
+			<button class="login100-form-btn" formaction="/adminrequests"
+				th:href="@{/adminrequests}">Requests</button>
+
+		</form>
+	</div>
+
+
+
+</body>
+
+</html>

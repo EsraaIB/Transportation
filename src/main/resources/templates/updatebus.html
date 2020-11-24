@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Telecom Egypt</title>
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+
+<link rel="stylesheet" href="css/style.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="css/util.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+
+
+</head>
+
+<body
+	style="background-image: url('images/bg03.jpg'); height =100%; background-position: center; background-size: cover;">
+
+
+	<div class="form-style-5">
+		<form th:action="@{/updatebus}" th:object="${gobus}" method="POST"
+			class="validate-form">
+			<fieldset>
+				<legend>
+					<span class="number">2</span> Update Bus
+				</legend>
+				<label Style="color: #808080;">Bus Number *</label> <input
+					type="text" name="field1" th:field="*{busNo}" readonly="readonly">
+				<div class="validate-input" data-validate="Enter Bus Time">
+					<label Style="color: #808080;">Bus Time *</label> <input
+						class="input100" type="time" name="field2" step="2"
+						th:field="*{busTime}">
+				</div>
+
+				<div class="validate-input" data-validate="Enter Driver Name">
+					<label Style="color: #808080;">Driver Name *</label> <input
+						class="input100" type="text" name="field3" th:field="*{busName}"
+						onkeypress=" return onlyChar(event)">
+				</div>
+
+				<div class="validate-input" data-validate="Enter Bus Capacity">
+					<label Style="color: #808080;">Bus Capacity *</label> <input
+						class="input100" type="text" name="field4" th:field="*{capacity}"
+						readonly="readonly" onkeypress=" return blockChar(event)">
+				</div>
+
+				<label for="job">From -> To</label> <select id="job" name="field5"
+					th:field="*{busFrom}">
+
+					<option value="Dokki">Dokki -> Smart</option>
+					<option value="Smart">Smart -> Dokki</option>
+				</select> </br> </br> </br>
+			</fieldset>
+
+			<input type="submit" value="Save" />
+			<div align="center" th:text="${updateresult}" Style="color: #0F0;"></div>
+			<a th:href="@{/admin}"><- Home</a>
+
+		</form>
+
+	</div>
+	<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="js/main.js"></script>
+	<!--===============================================================================================-->
+
+</body>
+
+</html>

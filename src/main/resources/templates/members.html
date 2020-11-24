@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Telecom Egypt</title>
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet3" href="css/util.css">
+
+
+</head>
+
+<body
+	style="background-image: url('images/bg03.jpg'); height =100%; background-position: center; background-size: cover;">
+	<section>
+		<div  align="left">
+			<a th:href="@{/admin}"><- Home</a>
+		</div>
+		<div class="tbl-header">
+			<table cellpadding="0" cellspacing="0" border="0">
+				<thead>
+					<tr>
+						<th>Search By Bus Number</th>
+						<th>Search By Branch</th>
+						<th>Search By Bus Time</th>
+
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<form th:action="@{/members}" th:object="${selectmodel}" method="POST">
+
+			<div>
+				<table cellpadding="0" cellspacing="0" border="0">
+					<tbody>
+						<tr>
+							<td><select th:field="*{selectedBusNo}">
+									<option selected="selected" value="-1">Bus Number</option>
+
+									<option th:each="bus: ${listBuses}" th:value="${bus.busNo}"
+										th:text="${bus.busNo}"></option>
+							</select></td>
+							<td><select th:field="*{selectedBranch}">
+									<option selected="selected" value="-1">Branch</option>
+									<option value="Dokki">Dokki</option>
+									<option value="Smart">Smart</option>
+							</select></td>
+
+							<td><select th:field="*{selectedBusTime}">
+									<option selected="selected" value="-1">Bus Time</option>
+
+									<option th:each="bus: ${listBusesTime}" th:value="${bus}"
+										th:text="${bus}">
+							</select></td>
+
+
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+			<br> <br> <br>
+			<div align="center">
+				<button class="login100-form-btn" align="center">Search</button>
+			</div>
+		</form>
+		<br> <br>
+		<div class="tbl-header">
+			<table cellpadding="0" cellspacing="0" border="0">
+				<thead>
+					<tr>
+						<th>User Id</th>
+						<th>First Name</th>
+						<th>Middle Name</th>
+						<th>Last Name</th>
+						<th>Branch</th>
+						<th>Select</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<div class="tbl-content">
+			<table cellpadding="0" cellspacing="0" border="0">
+				<tbody>
+					<tr th:each="user : ${users}">
+						<td th:text="${user.userId}"></td>
+						<td th:text="${user.userFName}"></td>
+						<td th:text="${user.userMName}"></td>
+						<td th:text="${user.userLName}"></td>
+						<td th:text="${user.Branch}"></td>
+						<td><input type="checkbox" /></td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+
+
+	</section>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

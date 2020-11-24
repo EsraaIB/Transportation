@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Telecom Egypt</title>
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+
+<link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body
+	style="background-image: url('images/bg03.jpg'); height =100%; background-position: center; background-size: cover;">
+
+	
+	<div class="form-style-5">
+		<form th:action="@{/updatebus}" th:object="${myinfo}" method="POST"
+			class="validate-form">
+			<fieldset>
+				<legend>
+					<span class="number">1</span> Update My Info.
+				</legend>
+				<input type="text" name="field1" placeholder="My Id *" th:field="*{userId}"></br></br>
+				<input type="text" name="field2" placeholder="My First Name *" th:field="*{userFName}"></br></br>
+				<input type="text" name="field3" placeholder="My Middle Name *" th:field="*{userMName}"></br></br>
+				<input type="text" name="field4" placeholder="My Last Name *" th:field="*{userLName}"></br></br>
+				<input type="text" name="field4" placeholder="My Password *" th:field="*{userpassword}"></br></br>
+				
+				<label for="job">My Branch :</label> <select id="job" name="field5" th:field="*{Branch}">
+					
+						<option value="DS">Dokki</option>
+						<option value="SD">Smart</option>
+				</select>
+				</br></br></br>
+			</fieldset>
+		   
+			<input type="submit" value="Save" />
+		</form>
+	</div>
+
+</body>
+
+</html>
